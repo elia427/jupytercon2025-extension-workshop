@@ -6,6 +6,7 @@ import {
 import { requestAPI } from './request';
 import { ImageCaptionMainAreaWidget } from './widget';
 import { ICommandPalette } from '@jupyterlab/apputils';
+import { ILauncher } from '@jupyterlab/launcher';
 
 /**
  * Initialization data for the jupytercon2025-extension-workshop extension.
@@ -14,11 +15,12 @@ const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupytercon2025-extension-workshop:plugin',
   description: 'A JupyterLab extension that displays a random image and caption.',
   autoStart: true,
-  requires: [ICommandPalette], // dependencies of our extension
+  requires: [ICommandPalette, ILauncher], // dependencies of our extension
 
   activate: (
     app: JupyterFrontEnd,
-    palette: ICommandPalette
+    palette: ICommandPalette,
+    launcher: ILauncher
   ) => {
     console.log('JupyterLab extension jupytercon2025-extension-workshop is activated!');
 
@@ -48,6 +50,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
     // Add the command to the palette
     palette.addItem({ command: command_id, category: 'Tutorial' });
+launcher.add({ command: command_id });
   }
 };
 
