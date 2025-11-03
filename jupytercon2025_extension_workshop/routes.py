@@ -12,7 +12,7 @@ class HelloRouteHandler(APIHandler):
     def get(self):
         self.finish(json.dumps({
             "data": (
-                "Hello, world!"
+                "Hello, Teshome!"
                 " This is the '/jupytercon2025-extension-workshop/hello' endpoint."
                 " Try visiting me in your browser!"
             ),
@@ -23,7 +23,7 @@ def setup_route_handlers(web_app):
     host_pattern = ".*$"
     base_url = web_app.settings["base_url"]
 
-    hello_route_pattern = url_path_join(base_url, "jupytercon2025-extension-workshop", "hello Teshome")
+    hello_route_pattern = url_path_join(base_url, "jupytercon2025-extension-workshop", "hello")
     handlers = [(hello_route_pattern, HelloRouteHandler)]
 
     web_app.add_handlers(host_pattern, handlers)
